@@ -7,7 +7,7 @@ Detail
 
 How To Use
 ----------
-
+```java
 	lineItem = new LineItem("mParties", "ALL");
 		for (String s : mParties) {
             lineItem.addItem(new Item(s, s));
@@ -30,3 +30,4 @@ How To Use
                     }
                 }
         );
+```
