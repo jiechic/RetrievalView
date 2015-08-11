@@ -1,4 +1,4 @@
-package com.jiechic.library.retrievallayout;
+package com.jiechic.library.retrievalview;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

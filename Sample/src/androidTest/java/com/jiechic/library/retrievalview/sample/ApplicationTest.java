@@ -1,4 +1,4 @@
-package com.jiechic.library.retrievallayout.sample;
+package com.jiechic.library.retrievalview.sample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

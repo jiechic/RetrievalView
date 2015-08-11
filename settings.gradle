@@ -1,5 +1,4 @@
-include ':Library'
-include ':Sample'
+include ':Library', ':Sample'
 
 //def submoduleProject = project(':Library')
 //submoduleProject.name = 'RetrievalLayout'

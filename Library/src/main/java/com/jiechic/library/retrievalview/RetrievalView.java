@@ -1,4 +1,4 @@
-package com.jiechic.library.retrievallayout;
+package com.jiechic.library.retrievalview;
 
 
 import android.content.Context;
@@ -19,6 +19,7 @@ import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.jiechic.library.retrieval.R;
 
 import java.util.ArrayList;
 import java.util.List;
