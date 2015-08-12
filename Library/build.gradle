@@ -63,5 +63,4 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 }
 
-apply from: '../gradle/android-artifacts.gradle'
 apply from: '../gradle/gradle-jcenter-push.gradle'
