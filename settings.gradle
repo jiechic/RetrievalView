@@ -1,4 +1,2 @@
 include ':RetrievalView', ':Sample'
-
-//def submoduleProject = project(':Library')
-//submoduleProject.name = 'RetrievalLayout'
+project(':RetrievalView').projectDir = new File(settingsDir, 'Library')
