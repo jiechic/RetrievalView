@@ -11,6 +11,14 @@ buildscript {
     }
 }
 //-----------for lambda end
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+    }
+}
 
 android {
     compileSdkVersion 22
@@ -55,5 +63,5 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 }
 
-apply from: ('../gradle/android-artifacts.gradle')
-apply from: ('../gradle/gradle-jcenter-push.gradle')
+apply from: '../gradle/android-artifacts.gradle'
+apply from: '../gradle/gradle-jcenter-push.gradle'
