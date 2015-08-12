@@ -1,2 +1,1 @@
-include ':RetrievalView', ':Sample'
-project(':RetrievalView').projectDir = new File(settingsDir, 'Library')
+include ':Library', ':Sample'

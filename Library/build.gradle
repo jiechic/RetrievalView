@@ -20,7 +20,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName "0.2"
     }
 
     compileOptions {
@@ -54,3 +54,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:22.2.1"
     compile 'com.nineoldandroids:library:2.4.0'
 }
+
+apply from: rootProject.file('gradle/android-artifacts.gradle')
+apply from: rootProject.file('gradle/gradle-jcenter-push.gradle')
