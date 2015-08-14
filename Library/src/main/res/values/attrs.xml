@@ -25,11 +25,11 @@
 <!--</resources>-->
 <resources>
     <declare-styleable name="RetrievalLayout">
-        <attr name="rv_height" format="dimension"/>
-        <attr name="rv_itemMinWidth" format="dimension"/>
-        <attr name="rv_dividerColor" format="color|reference"/>
-        <attr name="rv_itemTextColor" format="color|reference"/>
-        <attr name="rv_itemBackgoud" format="reference"/>
-        <attr name="rv_expandDuration" format="integer"/>
+        <attr name="line_height" format="dimension"/>
+        <attr name="item_MinWidth" format="dimension"/>
+        <attr name="dividerColor" format="reference|color"/>
+        <attr name="item_TextColor" format="reference|color"/>
+        <attr name="itemBackgoud" format="reference|color"/>
+        <attr name="expandDuration" format="integer"/>
     </declare-styleable>
 </resources>

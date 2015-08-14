@@ -34,10 +34,10 @@ public class RetrievalView extends RelativeLayout {
      */
     private List<LineItem> listMap = new ArrayList<>();
 
-    private int rl_heght;
-    private int rl_itemMinWith;
-    private int dividerColor;
-    private ColorStateList rl_itemTextColor;
+    private int line_heght;
+    private int itemMinWith;
+    private ColorStateList dividerColor;
+    private ColorStateList itemTextColor;
 
     LinearLayout.LayoutParams recyclerParams;
 
@@ -74,19 +74,26 @@ public class RetrievalView extends RelativeLayout {
     }
 
     private void init(final Context context, AttributeSet attrs) {
-        //get attr
-        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RetrievalLayout);
-        //get animation durtion time
-        duration = typedArray.getInt(R.styleable.RetrievalLayout_rv_expandDuration, getResources().getInteger(android.R.integer.config_longAnimTime));
-        dividerColor = typedArray.getColor(R.styleable.RetrievalLayout_rv_dividerColor, Color.parseColor("#1F000000"));
-        rl_heght = typedArray.getDimensionPixelSize(R.styleable.RetrievalLayout_rv_height, getResources().getDimensionPixelOffset(R.dimen.rl_height));
-        rl_itemMinWith = typedArray.getDimensionPixelSize(R.styleable.RetrievalLayout_rv_itemMinWidth, getResources().getDimensionPixelOffset(R.dimen.rl_itemMinWidth));
-        rl_itemTextColor = typedArray.getColorStateList(R.styleable.RetrievalLayout_rv_itemTextColor);
-        if (rl_itemTextColor == null) {
-            rl_itemTextColor = getResources().getColorStateList(R.color.retrieavl_text_selector);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.RetrievalLayout,
+                0, 0);
+        try {
+            //get animation durtion time
+            duration = typedArray.getInt(R.styleable.RetrievalLayout_expandDuration, getResources().getInteger(android.R.integer.config_longAnimTime));
+            dividerColor = typedArray.getColorStateList(R.styleable.RetrievalLayout_dividerColor);
+            if (dividerColor==null){
+                dividerColor = ColorStateList.valueOf(Color.parseColor("#1F000000"));
+            }
+            line_heght = typedArray.getDimensionPixelSize(R.styleable.RetrievalLayout_line_height, getResources().getDimensionPixelOffset(R.dimen.line_height));
+            itemMinWith = typedArray.getDimensionPixelSize(R.styleable.RetrievalLayout_item_MinWidth, getResources().getDimensionPixelOffset(R.dimen.itemMinWidth));
+            itemTextColor = typedArray.getColorStateList(R.styleable.RetrievalLayout_item_TextColor);
+            if (itemTextColor == null) {
+                itemTextColor = getResources().getColorStateList(R.color.retrieavl_text_selector);
+            }
+        } finally {
+            typedArray.recycle();
         }
-
-        typedArray.recycle();
 
 
         final View rootView = View.inflate(context, R.layout.view_retrieval, this);
@@ -133,19 +140,23 @@ public class RetrievalView extends RelativeLayout {
         refreshLayout();
     }
 
+    public void setNoSelectedText(String noSelectedText){
+        this.NoSelectedText=noSelectedText;
+    }
+
     public void setListener(onChangeListener listener) {
         this.listener = listener;
     }
 
     private void refreshLayout() {
-        headerView.setHeight(rl_heght);
+        headerView.setHeight(line_heght);
         contentView.removeAllViews();
         adapterList.clear();
 
         for (LineItem item : listMap) {
             LineAdapter adapter = new LineAdapter(item.getKey(), item.getList());
-            adapter.setTextColor(rl_itemTextColor);
-            adapter.setItemWidth(rl_itemMinWith);
+            adapter.setTextColor(itemTextColor);
+            adapter.setItemWidth(itemMinWith);
             adapterList.add(adapter);
             adapter.setListener((boolean isChange) -> {
                         if (listener != null) {
@@ -163,7 +174,7 @@ public class RetrievalView extends RelativeLayout {
                     }
             );
             RecyclerView recyclerView = new RecyclerView(getContext());
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, rl_heght);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, line_heght);
             recyclerView.setLayoutParams(layoutParams);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
             layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -174,7 +185,7 @@ public class RetrievalView extends RelativeLayout {
                 View dividerView = new View(getContext());
                 LinearLayout.LayoutParams temp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Dp2Px(getContext(), 0.5f));
                 dividerView.setLayoutParams(temp);
-                dividerView.setBackgroundColor(dividerColor);
+                dividerView.setBackgroundColor(dividerColor.getDefaultColor());
                 contentView.addView(dividerView);
             }
         }

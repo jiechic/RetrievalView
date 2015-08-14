@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="rl_height">42dp</dimen>
-    <dimen name="rl_itemMinWidth">54dp</dimen>
+    <dimen name="line_height">42dp</dimen>
+    <dimen name="itemMinWidth">54dp</dimen>
 
 </resources>
