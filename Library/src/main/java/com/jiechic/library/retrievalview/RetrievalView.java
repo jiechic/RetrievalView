@@ -136,7 +136,11 @@ public class RetrievalView extends RelativeLayout {
                 item.setSelected(false);
             }
         }
+        refreshLayout();
+    }
 
+    public void clearRetrieval(){
+        listMap.clear();
         refreshLayout();
     }
 
