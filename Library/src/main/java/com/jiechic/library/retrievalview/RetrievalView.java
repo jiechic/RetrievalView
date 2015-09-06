@@ -54,6 +54,14 @@ public class RetrievalView extends RelativeLayout {
 
     private onChangeListener listener;
 
+    public int getTotalHeight() {
+        if (adapterList != null) {
+            return line_heght * adapterList.size();
+        }else{
+            return line_heght;
+        }
+    }
+
     /**
      * init Context
      *
@@ -82,7 +90,7 @@ public class RetrievalView extends RelativeLayout {
             //get animation durtion time
             duration = typedArray.getInt(R.styleable.RetrievalLayout_expandDuration, getResources().getInteger(android.R.integer.config_longAnimTime));
             dividerColor = typedArray.getColorStateList(R.styleable.RetrievalLayout_dividerColor);
-            if (dividerColor==null){
+            if (dividerColor == null) {
                 dividerColor = ColorStateList.valueOf(Color.parseColor("#1F000000"));
             }
             line_heght = typedArray.getDimensionPixelSize(R.styleable.RetrievalLayout_line_height, getResources().getDimensionPixelOffset(R.dimen.line_height));
@@ -139,13 +147,13 @@ public class RetrievalView extends RelativeLayout {
         refreshLayout();
     }
 
-    public void clearRetrieval(){
+    public void clearRetrieval() {
         listMap.clear();
         refreshLayout();
     }
 
-    public void setNoSelectedText(String noSelectedText){
-        this.NoSelectedText=noSelectedText;
+    public void setNoSelectedText(String noSelectedText) {
+        this.NoSelectedText = noSelectedText;
     }
 
     public void setListener(onChangeListener listener) {
