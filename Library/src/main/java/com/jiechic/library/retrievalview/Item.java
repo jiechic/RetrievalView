@@ -2,10 +2,14 @@ package com.jiechic.library.retrievalview;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by <a href="http://www.jiechic.com" target="_blank">jiechic</a> on 15/7/29.
  */
-public class Item {
+public class Item implements Comparable<Item>{
     private String key = "";
     private String Id = "";
     private String Name = "";
@@ -38,5 +42,17 @@ public class Item {
     }
     public String getKey(){
         return key;
+    }
+
+    @Override
+    public int compareTo(Item another) {
+        return this.getId().compareTo(another.getId());
+    }
+
+    public static void main(String[] args){
+        List<Item> list=new ArrayList<>();
+        list.add(new Item("2","0"));
+        list.add(new Item("1","0"));
+        Collections.sort(list);
     }
 }
