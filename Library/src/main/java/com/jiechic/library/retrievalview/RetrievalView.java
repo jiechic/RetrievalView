@@ -136,12 +136,20 @@ public class RetrievalView extends RelativeLayout {
 
     public void addRetrieval(@NonNull LineItem lineItem, @Nullable String defaultId) {
         listMap.add(lineItem);
-        String tempDefaultId = TextUtils.isEmpty(defaultId) ? LineItem.DEFAULTID : defaultId;
-        for (Item item : lineItem.getList()) {
-            if (TextUtils.equals(item.getId(), tempDefaultId)) {
-                item.setSelected(true);
-            } else {
-                item.setSelected(false);
+        boolean hasSelect=false;
+        for (Item item : lineItem.getList()){
+            if (item.isSelected()){
+                hasSelect=true;
+            }
+        }
+        if (!hasSelect){
+            String tempDefaultId = TextUtils.isEmpty(defaultId) ? LineItem.DEFAULTID : defaultId;
+            for (Item item : lineItem.getList()) {
+                if (TextUtils.equals(item.getId(), tempDefaultId)) {
+                    item.setSelected(true);
+                } else {
+                    item.setSelected(false);
+                }
             }
         }
         refreshLayout();
