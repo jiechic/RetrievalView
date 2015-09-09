@@ -243,7 +243,7 @@ public class RetrievalView extends RelativeLayout {
         animation = new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
-                if (interpolatedTime == 1) {
+                if (headerView.getVisibility()==VISIBLE){
                     headerView.setVisibility(INVISIBLE);
                 }
                 v.getLayoutParams().height = (interpolatedTime == 1) ? LayoutParams.WRAP_CONTENT : (int) (targetHeight * interpolatedTime);
