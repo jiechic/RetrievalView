@@ -26,7 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     protected String[] mMonths = new String[]{
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
+            "", "F", "Mar", "Apr", "Mayfffffffffff", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
     };
 
     protected String[] mParties = new String[]{

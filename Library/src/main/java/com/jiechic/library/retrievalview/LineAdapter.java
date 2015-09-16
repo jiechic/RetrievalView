@@ -5,11 +5,11 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.jiechic.library.retrieval.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +41,10 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.Holder> {
 
     @Override
     public LineAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView textView = new TextView(parent.getContext());
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        textView.setLayoutParams(params);
-        textView.setGravity(Gravity.CENTER);
-        final int padding = Dp2Px(parent.getContext(), 4);
-        textView.setPadding(padding, padding, padding, padding);
-        return new Holder(textView);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item, parent, false);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        view.setLayoutParams(params);
+        return new Holder(view);
     }
 
     @Override
@@ -91,7 +88,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.Holder> {
 
         public Holder(View itemView) {
             super(itemView);
-            this.textView = (TextView) itemView;
+            this.textView = (TextView) itemView.findViewById(R.id.textview);
         }
     }
 
